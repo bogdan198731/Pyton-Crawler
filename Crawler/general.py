@@ -21,6 +21,8 @@ def create_data_files(project_name, base_url):
         write_file(crawled, '')
 
 
+print("upload new commit to git")
+
 # Create a new file
 def write_file(path, data):
     f = open(path, 'w')
