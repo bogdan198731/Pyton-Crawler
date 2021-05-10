@@ -15,7 +15,7 @@ from stoks import *
 from techno import *
 from financial import *
 from energy import cautare_Energie
-
+from cautare_oportunitati import cautareOportunitate
 
 
 #PROJECT_NAME = 'thenewboston3'
@@ -35,11 +35,20 @@ from energy import cautare_Energie
 
 INTERVAL = 300
 ITERATII = 10
+print('Doriti sa modificati setarile : (Y/N)')
+dorinta = input()
+if dorinta == "Y":
+    print("Interval = ")
+    INTERVAL = int(input())
+    print("Iteratii = ")
+    ITERATII = int(input())
 go = 1
 i = int(1)
 lista_prod = []
+wantToRead = False
+wantToRead = True
 
-if os.path.isfile('test.xlsx'):
+if os.path.isfile('test.xlsx') and wantToRead:
     readFromExcel('test.xlsx', lista_prod)
 #else:
 #    create_data_files('Crawler/BD.txt', 0)
@@ -77,7 +86,8 @@ while go != 0:
     te.join()
     fi.join()
     en.join()
-
+    if i > 1:
+        cautareOportunitate(lista_prod)
     if i >= ITERATII:
         break
     if go == 0:
